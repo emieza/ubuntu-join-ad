@@ -1,4 +1,4 @@
-# Linux join mahine to Active Directory
+# Join Ubuntu mahine to Active Directory
 
 Just that.
 
@@ -7,5 +7,12 @@ Just that.
 Just execute this script with root privileges, something like:
     sudo bash joinad.sh
 
-## Credits
 
+## Tests
+Tested successfully with:
+- Ubuntu 16.04 and Windows 2008 Server
+
+
+## Credits
+This doc have been used to build this script:
+- 
