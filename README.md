@@ -10,10 +10,12 @@ Just execute this script with root privileges, something like:
 
 ## Tests
 Tested successfully with:
-- Ubuntu 16.04 and Windows 2008 Server
+- Ubuntu Desktop 16.04 LTS and Windows 2008 Server
 
 
 ## Credits
 
 This doc have been used to build this script:
-- a
+- https://www.unixmen.com/how-to-join-an-ubuntu-desktop-into-an-active-directory-domain/
+
+
