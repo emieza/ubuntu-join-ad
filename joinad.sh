@@ -5,7 +5,7 @@
 # Tested with Ubuntu 16.04 and Windows 2008 Server
 
 # enter domain name
-echo "Domain name?"
+echo "Domain name? (please do it UPPERCASE!)"
 read DOMAIN
 
 # rename machine
@@ -84,17 +84,6 @@ echo "%admin\ locals	ALL=(ALL:ALL) ALL" > /etc/sudoers.d/infodom
 #echo "Testejant resolucio de noms. Entra un usuari del domini:"
 #read USER
 #echo $(id $USER)
-
-# arrange lightdm
-LIGHTDMFILE=/etc/lightdm/lightdm.conf
-if [ -f $LIGHTDMFILE ]
-then
-	mv $LIGHTDMFILE $LIGHTDMFILE.bkp
-fi
-echo "[SeatDefaults]
-allow-guest=false
-greeter-show-manual-login=true
-greeter-hide-users=true" > $LIGHTDMFILE
 
 # aprofitem per corregir problema de les consoles virtuals
 GRUBFILE=/etc/default/grub
