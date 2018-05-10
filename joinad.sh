@@ -44,10 +44,30 @@ kinit $ADMINUSER@$DOMAIN
 
 # join machine to domain
 realm --verbose join $DOMAIN \
---user-principal=TESTARENA/admin@$DOMAIN --unattended
+--user-principal=TESTARENA/$ADMINUSER@$DOMAIN --unattended
 
 # config sssd
-sed -i "/access_provider/c\access_provider = ad" /etc/sssd/sssd.conf
+echo "
+[sssd]
+domains = $DOMAIN
+config_file_version = 2
+services = nss, pam
+
+[domain/$DOMAIN]
+ad_domain = info.web
+krb5_realm = $DOMAIN
+realmd_tags = joined-with-adcli 
+cache_credentials = True
+id_provider = ad
+krb5_store_password_if_offline = True
+default_shell = /bin/bash
+ldap_id_mapping = True
+use_fully_qualified_names = False
+fallback_homedir = /home/%d/%u
+simple_allow_users = $
+access_provider = ad
+" > /etc/sssd/sssd.conf
+#sed -i "/access_provider/c\access_provider = ad" /etc/sssd/sssd.conf
 
 # restart service
 service sssd restart
